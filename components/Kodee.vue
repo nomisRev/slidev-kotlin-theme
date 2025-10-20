@@ -22,14 +22,18 @@ const props = withDefaults(defineProps<Props>(), {
 // Compute image source
 const imageSrc = computed(() => {
   const variant = props.variant.startsWith('kodee-') ? props.variant : `kodee-${props.variant}`
-  return `/${variant}.svg`
+  return `${variant}.svg`
+})
+const kodeeImage = computed(() => {
+  const base = import.meta.env.BASE_URL || '/'
+  return `${base}${imageSrc.value}`
 })
 
 // Compute size classes and dimensions
 const sizeConfig = computed(() => {
   switch (props.size) {
     case 'large':
-      if (imageSrc.value == "/theme/kodee-wave.svg") {
+      if (imageSrc.value == "theme/kodee-wave.svg") {
         return {width: '500px', height: '500px'}
       } else {
         return {width: '600px', height: '600px'}
@@ -50,11 +54,11 @@ const positionStyles = computed(() => {
 
   styles.right = '0px'
   if (props.position === 'corner') {
-    if (imageSrc.value == "/theme/kodee-greeting.svg") {
+    if (imageSrc.value == "theme/kodee-greeting.svg") {
       styles.bottom = '-42px'
-    } else if (imageSrc.value == "/theme/kodee-wink.svg") {
+    } else if (imageSrc.value == "theme/kodee-wink.svg") {
       styles.bottom = '-35px'
-    } else if (imageSrc.value == "/theme/kodee-wave.svg") {
+    } else if (imageSrc.value == "theme/kodee-wave.svg") {
       styles.bottom = '-15px'
     } else {
       styles.bottom = '-42px'
@@ -64,11 +68,11 @@ const positionStyles = computed(() => {
     styles.right = '-5%'
     styles.transform = 'translateY(-40%)'
 
-    if (imageSrc.value == "/theme/kodee-greeting.svg") {
+    if (imageSrc.value == "theme/kodee-greeting.svg") {
       styles.top = '13%'
-    } else if (imageSrc.value == "/theme/kodee-wink.svg") {
+    } else if (imageSrc.value == "theme/kodee-wink.svg") {
       styles.top = '10%'
-    } else if (imageSrc.value == "/theme/kodee-wave.svg") {
+    } else if (imageSrc.value == "theme/kodee-wave.svg") {
       styles.top = '16%'
       styles.right = '3%'
     } else {
@@ -119,7 +123,7 @@ const motionConfig = computed(() => {
       :initial="motionConfig.initial"
       :enter="motionConfig.enter"
       :leave="motionConfig.leave"
-      :src="imageSrc"
+      :src="kodeeImage"
       :alt="`Kodee ${variant}`"
       :style="positionStyles"
       class="kodee-character"
