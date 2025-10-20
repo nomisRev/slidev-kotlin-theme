@@ -2,11 +2,23 @@
   /* default theme color */
   /* can be overrided by uses `themeConfig` option */
   --slidev-theme-primary: #7954F6;
-  --slidev-code-background: #1F2023FF;
+  /*--shiki-light-bg: #1F2023FF;*/
+  /*--shiki-dark-bg: #1F2023FF;*/
+}
+
+.slidev-code {
+    background: #1F2023FF;
+}
+
+/* View Transition for Kodee Magic Move */
+::view-transition-old(kodee-mascot),
+::view-transition-new(kodee-mascot) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slidev-slide-content {
-    border-bottom: 4pt solid #7954F6;
+    border-bottom: 4pt solid #7A51F5FF;
 }
 
 .slidev-layout.cover,

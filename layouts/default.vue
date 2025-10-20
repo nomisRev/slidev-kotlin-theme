@@ -3,10 +3,8 @@ import KodeeWrapper from '../components/KodeeWrapper.vue'
 </script>
 
 <template>
-  <div class="slidev-layout cover">
-    <div class="my-auto w-full">
-      <slot />
-    </div>
+  <div class="slidev-layout default">
+    <slot />
     <KodeeWrapper />
   </div>
 </template>

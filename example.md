@@ -1,5 +1,6 @@
 ---
 theme: ./
+transition: view-transition
 ---
 
 # Slidev Theme Starter
@@ -55,18 +56,17 @@ image: https://cover.sli.dev
 
 Use code snippets and get the highlighting directly!
 
-```ts
+```kotlin
 interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
+  val id: number
+  val firstName: string
+  val lastName: string
+  val role: string
 }
 
-function updateUser(id: number, update: Partial<User>) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
+fun updateUser(id: number, update: User?) {
+  if (!update) return
+  getUserOrNull(id)?.update(update)
 }
 ```
 
@@ -78,3 +78,125 @@ class: "text-center"
 # Learn More
 
 [Documentation](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+
+---
+kodee:
+  variant: greeting
+  size: large
+  position: featured
+---
+
+# Kodee Magic Move Demo
+
+## Welcome to Kotlin!
+
+Meet Kodee, the Kotlin mascot!
+
+- Kodee appears large on this slide
+- Watch the magic move to the next slide
+- Smooth scale and position animation
+
+---
+kodee:
+  variant: greeting
+  size: small
+  position: corner
+---
+
+# Details Slide
+
+## Code Example
+
+Here's some Kotlin code with Kodee in the corner:
+
+```kotlin
+fun greet(name: String) {
+    println("Hello, $name!")
+}
+
+fun main() {
+    greet("Kotlin Developer")
+}
+```
+
+Notice how Kodee smoothly transitioned from large to small!
+
+---
+kodee:
+  variant: wink
+  size: large
+  position: featured
+---
+
+# Different Kodee Variants
+
+You can use different Kodee images:
+
+- `greeting` - Kodee waving hello
+- `wink` - Kodee winking
+- `jumping` - Kodee jumping with joy
+- `sitting` - Kodee sitting down
+- `drinking` - Kodee with a drink
+- And more!
+
+---
+kodee:
+  variant: wink
+  size: small
+  position: corner
+---
+
+# Minimal Boilerplate
+
+Just add to your slide's frontmatter:
+
+```yaml
+---
+kodee:
+  variant: greeting
+  size: large
+  position: featured
+---
+```
+
+That's it! Kodee will automatically appear and animate between slides.
+
+---
+kodee:
+  variant: wave
+  size: large
+  position: featured
+---
+
+# Different Kodee Variants
+
+You can use different Kodee images:
+
+- `greeting` - Kodee waving hello
+- `wink` - Kodee winking
+- `jumping` - Kodee jumping with joy
+- `sitting` - Kodee sitting down
+- `drinking` - Kodee with a drink
+- And more!
+
+---
+kodee:
+  variant: wave
+  size: small
+  position: corner
+---
+
+# Minimal Boilerplate
+
+Just add to your slide's frontmatter:
+
+```yaml
+---
+kodee:
+  variant: greeting
+  size: large
+  position: featured
+---
+```
+
+That's it! Kodee will automatically appear and animate between slides.
