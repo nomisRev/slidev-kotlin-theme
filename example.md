@@ -184,9 +184,6 @@ kodee:
 
 # Magic move & line highlighting
 
-
-# Lambda
-
 ````md magic-move
 ```kotlin
 val plusOne: (Int) -> Int = { it + 1 }
