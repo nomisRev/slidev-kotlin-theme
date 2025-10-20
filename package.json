@@ -1,0 +1,33 @@
+{
+  "name": "slidev-theme-kotlin",
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "^52.2.5"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.2.5"
+  },
+  "slidev": {
+    "colorSchema": "both",
+    "defaults": {
+      "fonts": {
+        "sans": "Inter",
+        "mono": "JetBrains Mono"
+      }
+    }
+  }
+}
