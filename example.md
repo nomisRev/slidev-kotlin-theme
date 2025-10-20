@@ -3,81 +3,7 @@ theme: ./
 transition: view-transition
 ---
 
-# Slidev Theme Starter
-
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
-    Press Space for next page <div class="i-carbon:arrow-right inline-block"/>
-  </span>
-</div>
-
----
-
-# What is Slidev?
-
-Slidev is a slide maker and presentation tool designed for developers. It includes the following features:
-
-- 📝 **Text-based** - focus on your content with Markdown, then style it later
-- 🎨 **Themable** - themes can be shared and reused as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel
-
-## Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>space</kbd> / <kbd>tab</kbd> / <kbd>right</kbd> | next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly!
-
-```kotlin
-interface User {
-  val id: number
-  val firstName: string
-  val lastName: string
-  val role: string
-}
-
-fun updateUser(id: number, update: User?) {
-  if (!update) return
-  getUserOrNull(id)?.update(update)
-}
-```
-
----
-layout: center
-class: "text-center"
----
-
-# Learn More
-
-[Documentation](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+# Kodee Magic Move Demo
 
 ---
 kodee:
@@ -200,3 +126,99 @@ kodee:
 ```
 
 That's it! Kodee will automatically appear and animate between slides.
+
+---
+kodee:
+  variant: wave
+  size: small
+  position: corner
+---
+
+# IntelliJ like Syntax Highlighting
+
+```kotlin
+interface User {
+    val id: Int
+    val firstName: String
+    val lastName: String
+    val role: String
+}
+
+fun getUser(id: Long): User? = null
+
+fun updateUser(id: Long, update: User?) {
+    if (update == null) return
+    getUser(id)
+}
+```
+
+---
+kodee:
+  variant: wave
+  size: small
+  position: corner
+---
+
+# Magic Kotlin Code Move
+
+````md magic-move
+```kotlin
+fun updateUser(id: Long, update: User?) {
+}
+```
+
+```kotlin
+fun updateUser(id: Long, update: User?) {
+    if (update == null) return
+    getUser(id)
+}
+```
+````
+
+---
+kodee:
+  variant: wave
+  size: small
+  position: corner
+---
+
+# Magic move & line highlighting
+
+
+# Lambda
+
+````md magic-move
+```kotlin
+val plusOne: (Int) -> Int = { it + 1 }
+```
+```kotlin{3}
+val plusOne: (Int) -> Int = { it + 1 }
+
+val sum: (Int, Int) -> Int = { a, b -> a + b }
+```
+
+```kotlin{5}
+val plusOne: (Int) -> Int = { it + 1 }
+
+val sum: (Int, Int) -> Int = { a, b -> a + b }
+
+val plus: (Int, Int) -> Int = Int::plus
+```
+````
+
+---
+kodee:
+  variant: wave
+  size: small
+  position: corner
+---
+
+# Kotlin code & Rough Notation
+
+```kotlin
+operator fun <span v-mark.underline>Content</span>.unaryPlus(): Unit {
+    <span v-mark.circle>println</span>("Hello, World!")
+}
+```
+
+---

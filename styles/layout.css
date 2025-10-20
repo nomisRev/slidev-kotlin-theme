@@ -1,9 +1,7 @@
 :root {
-  /* default theme color */
-  /* can be overrided by uses `themeConfig` option */
-  --slidev-theme-primary: #7954F6;
-  /*--shiki-light-bg: #1F2023FF;*/
-  /*--shiki-dark-bg: #1F2023FF;*/
+    /* default theme color */
+    /* can be overrided by uses `themeConfig` option */
+    --slidev-theme-primary: #7954F6;
 }
 
 .slidev-code {
@@ -13,8 +11,8 @@
 /* View Transition for Kodee Magic Move */
 ::view-transition-old(kodee-mascot),
 ::view-transition-new(kodee-mascot) {
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slidev-slide-content {
@@ -23,19 +21,19 @@
 
 .slidev-layout.cover,
 .slidev-layout.intro {
-  @apply h-full grid;
+    @apply h-full grid;
 
-  h1 {
-    @apply text-6xl leading-20;
-  }
+    h1 {
+        @apply text-6xl leading-20;
+    }
 
-  h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
-  }
+    h1 + p {
+        @apply -mt-2 opacity-50 mb-4;
+    }
 
-  p + h2,
-  ul + h2,
-  table + h2 {
-    @apply mt-10;
-  }
+    p + h2,
+    ul + h2,
+    table + h2 {
+        @apply mt-10;
+    }
 }

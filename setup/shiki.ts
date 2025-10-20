@@ -54,357 +54,279 @@ function transformerVMark(): ShikiTransformer {
 }
 
 /**
- * IntelliJ IDEA Dark Theme for Shiki
- * 
- * This theme matches IntelliJ IDEA's default dark theme (2025.2.3.0.0).
- * All colors are extracted from IntelliJDark.icls and mapped to TextMate scopes.
- * 
- * Color Mapping Documentation:
- * 
- * Background & Foreground:
- * - bg: #1e1f22 (from TEXT background in IntelliJDark.icls)
- * - fg: #bcbec4 (from TEXT foreground, DEFAULT_IDENTIFIER)
- * 
- * Comments:
- * - #7a7e85 (from DEFAULT_LINE_COMMENT, DEFAULT_BLOCK_COMMENT)
- * - #5f826b (from DEFAULT_DOC_COMMENT - italic)
- * 
- * Keywords & Control Flow:
- * - #cf8e6d (from DEFAULT_KEYWORD)
- * 
- * Strings & Characters:
- * - #6aab73 (from DEFAULT_STRING)
- * - #cf8e6d (from DEFAULT_VALID_STRING_ESCAPE for escape sequences)
- * 
- * Numbers:
- * - #2aacb8 (from DEFAULT_NUMBER)
- * 
- * Functions & Methods:
- * - #56a8f5 (from DEFAULT_FUNCTION_DECLARATION)
- * - #57aaf7 (from DEFAULT_INSTANCE_METHOD)
- * 
- * Types & Classes:
- * - #bcbec4 (from DEFAULT_CLASS_REFERENCE - default text color)
- * - #16baac (from TYPE_PARAMETER_NAME_ATTRIBUTES for type parameters)
- * 
- * Variables & Properties:
- * - #c77dbb (from DEFAULT_CONSTANT, DEFAULT_INSTANCE_FIELD, DEFAULT_STATIC_FIELD)
- * - #bcbec4 (from DEFAULT_IDENTIFIER for regular variables)
- * 
- * Annotations & Metadata:
- * - #b3ae60 (from DEFAULT_METADATA)
- * 
- * Operators & Punctuation:
- * - #bcbec4 (from DEFAULT_OPERATION_SIGN, DEFAULT_BRACES, DEFAULT_BRACKETS, etc.)
- * 
- * Kotlin-Specific:
- * - Labels: #32b8af (from KOTLIN_LABEL)
- * - Named Arguments: #56c1d6 (from KOTLIN_NAMED_ARGUMENT)
+ * From: `node debug.js Test.kt`:
+ *
+ *   comment.block.javadoc.kotlin
+ *   comment.line.double-slash.kotlin
+ *   constant.character.escape.kotlin
+ *   constant.language.boolean.kotlin
+ *   constant.language.null.kotlin
+ *   constant.numeric.binary.kotlin
+ *   constant.numeric.decimal.kotlin
+ *   constant.numeric.hex.kotlin
+ *   entity.name.function.call.kotlin
+ *   entity.name.function.declaration.kotlin
+ *   entity.name.package.kotlin
+ *   entity.name.type.annotation.kotlin
+ *   entity.name.type.class.extension.kotlin
+ *   entity.name.type.class.kotlin
+ *   entity.name.type.kotlin
+ *   entity.name.type.object.kotlin
+ *   keyword.control.kotlin
+ *   keyword.hard.class.kotlin
+ *   keyword.hard.fun.kotlin
+ *   keyword.hard.kotlin
+ *   keyword.hard.object.kotlin
+ *   keyword.hard.package.kotlin
+ *   keyword.hard.typealias.kotlin
+ *   keyword.operator.arithmetic.kotlin
+ *   keyword.operator.assignment.kotlin
+ *   keyword.operator.comparison.kotlin
+ *   keyword.operator.logical.kotlin
+ *   keyword.operator.range.kotlin
+ *   keyword.soft.kotlin
+ *   meta.import.kotlin
+ *   meta.package.kotlin
+ *   meta.template.expression.kotlin
+ *   punctuation.definition.template-expression.begin
+ *   punctuation.definition.template-expression.end
+ *   source.kotlin
+ *   storage.modifier.other.kotlin
+ *   storage.type.function.arrow.kotlin
+ *   string.quoted.double.kotlin
+ *   string.quoted.single.kotlin
+ *   variable.language.this.kotlin
+ *   variable.language.wildcard.kotlin
+ *   variable.string-escape.kotlin
  */
 const intellijDarkTheme = {
     name: 'intellij-dark',
     type: 'dark',
     colors: {
-        // Editor colors from IntelliJDark.icls
+        // Editor colors
         'editor.background': '#1e1f22',
         'editor.foreground': '#bcbec4',
     },
     settings: [
+        // Base foreground/background
         {
-            // Default text style
             settings: {
-                foreground: '#bcbec4', // DEFAULT_IDENTIFIER
-            },
+                foreground: '#bcbec4',
+                background: '#1e1f22',
+            }
         },
+        // Comments - line and block comments (gray)
         {
-            // Comments - line and block comments
             scope: [
+                'comment.line.double-slash.kotlin',
+                'comment.block.kotlin',
                 'comment',
-                'punctuation.definition.comment',
             ],
             settings: {
-                foreground: '#7a7e85', // DEFAULT_LINE_COMMENT, DEFAULT_BLOCK_COMMENT
-            },
+                foreground: '#7a7e85',
+            }
         },
+        // Documentation comments (greenish, italic)
         {
-            // Documentation comments (KDoc, JavaDoc, etc.)
             scope: [
+                'comment.block.javadoc.kotlin',
                 'comment.block.documentation',
-                'comment.block.javadoc',
             ],
             settings: {
-                foreground: '#5f826b', // DEFAULT_DOC_COMMENT
+                foreground: '#5f826b',
                 fontStyle: 'italic',
-            },
+            }
         },
+        // Keywords - all hard keywords (orange-brown)
         {
-            // Documentation tags (@param, @return, etc.)
             scope: [
-                'storage.type.class.jsdoc',
-                'keyword.other.documentation',
+                'keyword.hard.kotlin',
+                'keyword.hard.fun.kotlin',
+                'keyword.hard.class.kotlin',
+                'keyword.hard.object.kotlin',
+                'keyword.hard.package.kotlin',
+                'keyword.hard.typealias.kotlin',
+                'keyword.control.kotlin',
+                'keyword.soft.kotlin',
+                'keyword',
             ],
             settings: {
-                foreground: '#67a37c', // DEFAULT_DOC_COMMENT_TAG
-            },
+                foreground: '#cf8e6d',
+            }
         },
+        // Storage modifiers (orange-brown, same as keywords)
         {
-            // Keywords (fun, val, var, if, else, when, return, etc.)
             scope: [
-                'keyword',
-                'keyword.control',
-                'keyword.operator.new',
-                'storage.type',
+                'storage.modifier.other.kotlin',
                 'storage.modifier',
             ],
             settings: {
-                foreground: '#cf8e6d', // DEFAULT_KEYWORD
-            },
+                foreground: '#cf8e6d',
+            }
         },
+        // Boolean and null constants (orange-brown, same as keywords)
         {
-            // Strings
             scope: [
+                'constant.language.boolean.kotlin',
+                'constant.language.null.kotlin',
+                'constant.language',
+            ],
+            settings: {
+                foreground: '#cf8e6d',
+            }
+        },
+        // Strings (green)
+        {
+            scope: [
+                'string.quoted.double.kotlin',
+                'string.quoted.single.kotlin',
                 'string',
-                'string.quoted',
-                'string.template',
             ],
             settings: {
-                foreground: '#6aab73', // DEFAULT_STRING
-            },
+                foreground: '#6aab73',
+            }
         },
+        // String escape sequences (orange-brown, same as keywords)
         {
-            // String interpolation expressions
             scope: [
-                'meta.template.expression',
-                'punctuation.definition.template-expression',
-                'punctuation.section.embedded',
-            ],
-            settings: {
-                foreground: '#bcbec4', // Default text color for interpolated expressions
-            },
-        },
-        {
-            // String escape sequences (\n, \t, etc.)
-            scope: [
+                'constant.character.escape.kotlin',
+                'variable.string-escape.kotlin',
                 'constant.character.escape',
             ],
             settings: {
-                foreground: '#cf8e6d', // DEFAULT_VALID_STRING_ESCAPE
-            },
+                foreground: '#cf8e6d',
+            }
         },
+        // String template expressions (default color for the delimiters)
         {
-            // Numbers (integers, floats, hex, etc.)
             scope: [
+                'punctuation.definition.template-expression.begin',
+                'punctuation.definition.template-expression.end',
+                'meta.template.expression.kotlin',
+            ],
+            settings: {
+                foreground: '#bcbec4',
+            }
+        },
+        // Numbers - all numeric literals (cyan)
+        {
+            scope: [
+                'constant.numeric.decimal.kotlin',
+                'constant.numeric.hex.kotlin',
+                'constant.numeric.binary.kotlin',
                 'constant.numeric',
-                'constant.language.numeric',
             ],
             settings: {
-                foreground: '#2aacb8', // DEFAULT_NUMBER
-            },
+                foreground: '#2aacb8',
+            }
         },
+        // Function declarations (blue)
         {
-            // Boolean and null literals
             scope: [
-                'constant.language.boolean',
-                'constant.language.null',
-                'constant.language.undefined',
-            ],
-            settings: {
-                foreground: '#cf8e6d', // Keywords color for language constants
-            },
-        },
-        {
-            // Function declarations
-            scope: [
+                'entity.name.function.declaration.kotlin',
                 'entity.name.function',
-                'meta.function',
-                'support.function',
             ],
             settings: {
-                foreground: '#56a8f5', // DEFAULT_FUNCTION_DECLARATION
-            },
+                foreground: '#56a8f5',
+            }
         },
+        // Function calls (blue)
         {
-            // Function calls
             scope: [
+                'entity.name.function.call.kotlin',
                 'meta.function-call',
-                'entity.name.function-call',
             ],
             settings: {
-                foreground: '#56a8f5', // Same as function declarations
-            },
+                foreground: '#b5b7bd',
+            }
         },
+        // Class names (default color)
         {
-            // Method calls
             scope: [
-                'meta.method-call',
-                'entity.name.method-call',
-            ],
-            settings: {
-                foreground: '#57aaf7', // DEFAULT_INSTANCE_METHOD
-            },
-        },
-        {
-            // Class names and types
-            scope: [
-                'entity.name.class',
+                'entity.name.type.class.kotlin',
+                'entity.name.type.class.extension.kotlin',
+                'entity.name.type.kotlin',
                 'entity.name.type',
-                'support.class',
-                'support.type',
+                'entity.name.class',
             ],
             settings: {
-                foreground: '#bcbec4', // DEFAULT_CLASS_REFERENCE
-            },
+                foreground: '#bcbec4',
+            }
         },
+        // Object names (default color)
         {
-            // Type parameters (generics like <T>)
             scope: [
-                'entity.name.type.parameter',
-                'storage.type.generic',
+                'entity.name.type.object.kotlin',
             ],
             settings: {
-                foreground: '#16baac', // TYPE_PARAMETER_NAME_ATTRIBUTES
-            },
+                foreground: '#bcbec4',
+            }
         },
+        // Package names (default color)
         {
-            // Interface names
             scope: [
-                'entity.name.interface',
+                'entity.name.package.kotlin',
+                'meta.package.kotlin',
             ],
             settings: {
-                foreground: '#bcbec4', // Same as class names
-            },
+                foreground: '#bcbec4',
+            }
         },
+        // Annotations (yellow-green)
         {
-            // Properties and fields
             scope: [
-                'variable.other.property',
-                'variable.other.object.property',
-                'entity.name.variable.field',
-            ],
-            settings: {
-                foreground: '#c77dbb', // DEFAULT_INSTANCE_FIELD
-            },
-        },
-        {
-            // Constants
-            scope: [
-                'variable.other.constant',
-                'constant.other',
-            ],
-            settings: {
-                foreground: '#c77dbb', // DEFAULT_CONSTANT
-                fontStyle: 'italic',
-            },
-        },
-        {
-            // Parameters
-            scope: [
-                'variable.parameter',
-                'meta.parameter',
-            ],
-            settings: {
-                foreground: '#bcbec4', // Default identifier color
-            },
-        },
-        {
-            // Variables
-            scope: [
-                'variable',
-                'variable.other',
-            ],
-            settings: {
-                foreground: '#bcbec4', // DEFAULT_IDENTIFIER
-            },
-        },
-        {
-            // Annotations (@Deprecated, @Override, etc.)
-            scope: [
+                'entity.name.type.annotation.kotlin',
                 'storage.type.annotation',
-                'punctuation.definition.annotation',
                 'meta.annotation',
             ],
             settings: {
-                foreground: '#b3ae60', // DEFAULT_METADATA
-            },
+                foreground: '#b3ae60',
+            }
         },
+        // Operators (default color)
         {
-            // Operators (+, -, *, /, =, ==, etc.)
             scope: [
+                'keyword.operator.arithmetic.kotlin',
+                'keyword.operator.assignment.kotlin',
+                'keyword.operator.comparison.kotlin',
+                'keyword.operator.logical.kotlin',
+                'keyword.operator.range.kotlin',
                 'keyword.operator',
-                'keyword.operator.arithmetic',
-                'keyword.operator.comparison',
-                'keyword.operator.logical',
-                'keyword.operator.assignment',
             ],
             settings: {
-                foreground: '#bcbec4', // DEFAULT_OPERATION_SIGN
-            },
+                foreground: '#bcbec4',
+            }
         },
+        // Arrow function type (default color)
         {
-            // Punctuation (braces, brackets, parentheses, commas, semicolons, dots)
             scope: [
-                'punctuation',
-                'punctuation.separator',
-                'punctuation.terminator',
-                'punctuation.accessor',
-                'meta.brace',
-                'meta.bracket',
+                'storage.type.function.arrow.kotlin',
             ],
             settings: {
-                foreground: '#bcbec4', // DEFAULT_BRACES, DEFAULT_BRACKETS, DEFAULT_PARENTHS, etc.
-            },
+                foreground: '#bcbec4',
+            }
         },
+        // Language keywords like 'this' (orange-brown, same as keywords)
         {
-            // Kotlin-specific: Labels
             scope: [
-                'entity.name.label',
+                'variable.language.this.kotlin',
+                'variable.language.wildcard.kotlin',
+                'variable.language',
             ],
             settings: {
-                foreground: '#32b8af', // KOTLIN_LABEL
-            },
+                foreground: '#cf8e6d',
+            }
         },
+        // Import statements (default color)
         {
-            // Kotlin-specific: Named arguments
             scope: [
-                'variable.parameter.named',
+                'meta.import.kotlin',
             ],
             settings: {
-                foreground: '#56c1d6', // KOTLIN_NAMED_ARGUMENT
-            },
+                foreground: '#bcbec4',
+            }
         },
-        {
-            // This keyword
-            scope: [
-                'variable.language.this',
-                'variable.language.super',
-            ],
-            settings: {
-                foreground: '#cf8e6d', // Keyword color
-            },
-        },
-        {
-            // Import/package statements
-            scope: [
-                'keyword.control.import',
-                'keyword.control.package',
-            ],
-            settings: {
-                foreground: '#cf8e6d', // DEFAULT_KEYWORD
-            },
-        },
-        {
-            // Namespace/package names
-            scope: [
-                'entity.name.namespace',
-                'entity.name.package',
-            ],
-            settings: {
-                foreground: '#bcbec4', // Default text color
-            },
-        },
-    ],
-    bg: '#1e1f22', // TEXT background
-    fg: '#bcbec4', // TEXT foreground
+    ]
 }
 
 export default defineShikiSetup((): ShikiSetupReturn => {
