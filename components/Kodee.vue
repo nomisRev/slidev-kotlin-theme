@@ -52,13 +52,16 @@ const positionStyles = computed(() => {
     height: sizeConfig.value.height,
   }
 
+  const src = imageSrc.value
+  console.log(`[DEBUG] Kodee image: encountered ${src}`)
+
   styles.right = '0px'
   if (props.position === 'corner') {
-    if (imageSrc.value == "kodee-greeting.svg") {
+    if (src == "kodee-greeting.svg") {
       styles.bottom = '-42px'
-    } else if (imageSrc.value == "kodee-wink.svg") {
+    } else if (src == "kodee-wink.svg") {
       styles.bottom = '-35px'
-    } else if (imageSrc.value == "kodee-wave.svg") {
+    } else if (src == "kodee-wave.svg") {
       styles.bottom = '-15px'
     } else {
       styles.bottom = '-42px'
@@ -68,11 +71,11 @@ const positionStyles = computed(() => {
     styles.right = '-5%'
     styles.transform = 'translateY(-40%)'
 
-    if (imageSrc.value == "kodee-greeting.svg") {
+    if (src == "kodee-greeting.svg") {
       styles.top = '13%'
-    } else if (imageSrc.value == "kodee-wink.svg") {
+    } else if (src == "kodee-wink.svg") {
       styles.top = '10%'
-    } else if (imageSrc.value == "kodee-wave.svg") {
+    } else if (src == "kodee-wave.svg") {
       styles.top = '16%'
       styles.right = '3%'
     } else {
