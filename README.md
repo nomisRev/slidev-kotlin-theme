@@ -23,7 +23,7 @@ This theme provides a professional presentation template tailored for Kotlin dev
 Install the theme in your Slidev project:
 
 ```bash
-npm install @nomisrev/slidev-theme-kotlin
+npm install slidev-theme-kotlin
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ Add the theme to your slides' frontmatter:
 
 ```yaml
 ---
-theme: @nomisrev/slidev-theme-kotlin
+theme: kotlin
 ---
 
 # Your Presentation Title
