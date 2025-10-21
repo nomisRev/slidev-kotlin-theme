@@ -95,10 +95,13 @@ const positionStyles = computed(() => {
 const motionConfig = computed(() => {
   const baseScale = props.scale || 1
 
+  // Check if we're in a view transition (Kodee staying the same between slides)
+  const isViewTransitioning = typeof document !== 'undefined' && document.startViewTransition
+
   return {
     initial: {
-      opacity: 0,
-      scale: baseScale * 0.8,
+      opacity: isViewTransitioning ? 1 : 0,
+      scale: baseScale,
     },
     enter: {
       opacity: 1,
@@ -108,13 +111,14 @@ const motionConfig = computed(() => {
         stiffness: 100,
         damping: 15,
         mass: 1,
+        duration: isViewTransitioning ? 0 : undefined,
       },
     },
     leave: {
-      opacity: 0,
-      scale: baseScale * 0.8,
+      opacity: isViewTransitioning ? 1 : 0,
+      scale: baseScale,
       transition: {
-        duration: 300,
+        duration: isViewTransitioning ? 0 : 300,
       },
     },
   }

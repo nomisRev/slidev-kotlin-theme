@@ -13,6 +13,12 @@
 ::view-transition-new(kodee-mascot) {
     animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: normal;
+}
+
+::view-transition-group(kodee-mascot) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slidev-slide-content {
