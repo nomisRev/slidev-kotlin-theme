@@ -22,8 +22,9 @@ const props = withDefaults(defineProps<Props>(), {
 // Compute image source
 const imageSrc = computed(() => {
   const variant = props.variant.startsWith('kodee-') ? props.variant : `kodee-${props.variant}`
-  return `${variant}.svg`
+  return `theme/${variant}.svg`
 })
+
 const kodeeImage = computed(() => {
   const base = import.meta.env.BASE_URL || '/'
   return `${base}${imageSrc.value}`
