@@ -1,5 +1,6 @@
 ---
 theme: ./
+transition: view-transition
 ---
 
 # Kodee Magic Move Demo
