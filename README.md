@@ -35,6 +35,7 @@ Add the theme to your slides' frontmatter:
 ```yaml
 ---
 theme: kotlin
+transition: view-transition
 ---
 
 # Your Presentation Title
